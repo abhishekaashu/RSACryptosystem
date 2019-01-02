@@ -38,7 +38,7 @@ class MillerRabin
             return false; 
         if (n <= 3) 
             return true; 
-        int d = n - 1;       
+        int d = n - 1;
         while (d % 2 == 0) 
             d /= 2; 
         for (int i = 0; i < k; i++) 
