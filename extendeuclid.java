@@ -20,14 +20,12 @@ class ExtendEuclid
         {
             x=0;
             y=1;
-            System.out.println("x="+x+"\ny="+y);
             return b;
         }
         else if(b==0)
         {
             x=1;
             y=0;
-            System.out.println("x="+x+"\ny="+y);
             return a;
         }
         else if(a>b)
@@ -35,9 +33,6 @@ class ExtendEuclid
             gcd=euclid(a%b,b,x1,y1);
             x=y1-(a/b)*x1;
             y=x1;
-            System.out.println("x="+x+"\ny="+y);
-            return gcd;
-
         }
         
         else
@@ -45,8 +40,7 @@ class ExtendEuclid
             gcd=euclid(a,b%a,x1,y1);
             x=y1;
             y=x1-(b/a)*y1;
-            System.out.println("x="+x+"\ny="+y);
-            return gcd;
         }
+            return gcd;
     }
 }
