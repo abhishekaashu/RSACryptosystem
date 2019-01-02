@@ -7,6 +7,7 @@ class Euclid
         Scanner sc=new Scanner(System.in);
         int x=sc.nextInt();
         int y=sc.nextInt();
+        sc.close();
         int z=gcd(x,y);
         System.out.println(z);
     }
