@@ -2,18 +2,6 @@ import java.util.*;
 import java.math.*;
 class RSABigInt
 {
-	static int convert(String s)
-	{
-		int m=0;
-		int l=s.length();
-		for(int i=0;i<l;i++)
-		{
-			char ch=s.charAt(i);
-			int c=(int)ch-64;
-			m=m*10+c;
-		}
-		return m;
-	}
 
 	public static void main(String args[])
 	{
@@ -34,9 +22,9 @@ class RSABigInt
 		System.out.println("Public Key "+n+" "+e);
 		d = e.modInverse(phi);
 		System.out.println("Private Key "+d);
-		String msg = "HELLOIERYOP";
-		BigInteger message=BigInteger.valueOf(convert(msg));
-		System.out.println("Message data = "+msg+" "+message);
+		int msg=89;
+		BigInteger message=BigInteger.valueOf(msg);
+		System.out.println("Message data = "+msg);
 		c = message.modPow(e,n);
 		System.out.println("\nEncrypted data = "+c);
 		BigInteger message1 = c.modPow(d,n);
