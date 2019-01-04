@@ -54,9 +54,10 @@ class MillerRabin
 		Scanner sc=new Scanner(System.in);
         System.out.println("Enter the number to check for primality"); 
         n=sc.nextInt();                       
-        for (int i = 1; i < 100; i++) 
-            if (isPrime(n, k)) 
-                System.out.print(n + " "); 
+        if (isPrime(n, k)) 
+            System.out.print(n + " is prime"); 
+        else
+            System.out.print(n + " is not prime"); 
                 sc.close();
     } 
 }

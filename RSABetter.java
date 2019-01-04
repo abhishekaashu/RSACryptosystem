@@ -4,7 +4,7 @@ class RSABetter
 {
     private BigInteger p,q,n,phi,e,d;
     int bitlength=1024;
-    public RsaFinal()
+    public RsaBetter()
     {
         Random rnd = new Random();
 		p=BigInteger.probablePrime(bitlength,rnd);
