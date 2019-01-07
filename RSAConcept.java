@@ -146,14 +146,14 @@ class RSAConcept
     public byte[] encrypt(byte[] message)
     {
         BigInteger m=new BigInteger(message);
-        return modexp(m,e,n).toByteArray();
+        return m.modPow(e, n).toByteArray();
     }
 
     // Decrypt message
     public byte[] decrypt(byte[] message)
     {
         BigInteger m=new BigInteger(message);
-        return modexp(m,d,n).toByteArray();
+        return m.modPow(d, n).toByteArray();
     }
 
 	public static void main(String args[])

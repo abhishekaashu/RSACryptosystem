@@ -1,6 +1,7 @@
 import java.util.*;
+
 import java.math.*;
-class RSABetter
+class RsaBetter
 {
     private BigInteger p,q,n,phi,e,d;
     int bitlength=1024;
@@ -51,7 +52,7 @@ class RSABetter
 
 	public static void main(String args[])
 	{
-        RsaFinal rsa=new RsaFinal();
+        RsaBetter rsa=new RsaBetter();
 		String teststring = "Sahil";
 		String a=bytesToString(teststring.getBytes());
 		System.out.println("Encrypting String: " + teststring);
