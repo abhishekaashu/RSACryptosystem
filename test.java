@@ -5,20 +5,17 @@ class RSAConcept
     private BigInteger p,q,n,phi,e,d;
     int bitlength=1024;
 
-
     //(x^y)%p
     static BigInteger modexp(BigInteger x,BigInteger y,BigInteger p)
     {
         BigInteger res=BigInteger.valueOf(1);
         x=x.mod(p);
-        while(y.compareTo(BigInteger.ZERO)==1)
+        while(y.compareTo(BigInteger.ZERO)>0)
         {
-            if((y.mod(BigInteger.TWO)).compareTo(BigInteger.ONE)==0)//y is odd
-            {
-                res=(res.multiply(x)).mod(p);
-            }
+            if(y.mod(BigInteger.TWO).compareTo(BigInteger.ONE)==0)//y is odd
+            res=(res.multiply(x)).mod(p);
             y=y.shiftRight(1);//y=y/2
-            x=(x.multiply(x)).mod(p);
+            x=(x.multiply(x)).multiply(p);
         }
         return res;
     }
@@ -29,7 +26,7 @@ class RSAConcept
         BigInteger res=BigInteger.valueOf(0);
         
         x=x.mod(p);
-        while(y.compareTo(BigInteger.ZERO)==1)
+        while(y.compareTo(BigInteger.ZERO)>0)
         {
             if(y.mod(BigInteger.TWO).compareTo(BigInteger.ONE)==0)//y is odd
             res=(res.add(x)).mod(p);
@@ -40,7 +37,7 @@ class RSAConcept
     }
 
 
-    /*static boolean millerTest(BigInteger d, BigInteger n)
+    static boolean millerTest(BigInteger d, BigInteger n)
     {
         Random rand = new Random();
         BigInteger a = new BigInteger(n.intValue(), rand);
@@ -73,7 +70,7 @@ class RSAConcept
             if (!millerTest(d, n)) 
                 return false; 
         return true; 
-    }*/
+    }
 
     static BigInteger modInv(BigInteger a,BigInteger m) 
     { 
@@ -172,6 +169,9 @@ class RSAConcept
         byte[] decrypted = rsa.decrypt(encrypted);
 		System.out.println("Decrypting Bytes: " + bytesToString(decrypted));
 		String sahil=new String(decrypted);
-        System.out.println("Decrypted String: " + sahil);   
+        System.out.println("Decrypted String: " + sahil);
+        
+        
+        
 	}
 }
