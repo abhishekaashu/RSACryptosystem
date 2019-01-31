@@ -27,9 +27,7 @@ class RSABigInt
 			else
 				e=e.add(BigInteger.ONE);
 		}
-		//System.out.println("Public Key "+n+" "+e);
 		d = e.modInverse(phi);
-		//System.out.println("Private Key "+d);
     }
 
 	private static String bytesToString(byte[] encrypted)

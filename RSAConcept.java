@@ -1,10 +1,12 @@
 /*
     This code implements RSA algorithm using Java BigInteger class.
+    We have defined functions for all the basic operations which are required to implement
+    encryption and decryption like modular exponentiation,modular multiplication
+    and modular inverse(using Extended Euclidean Algorithm).
     1. Generate an RSA Public-Private key pair.
     2. Encrypt an arbitrary message using the public key.
     3. Decrypt the message using the private key.
-    4. Implement Encryption and Decryption by using user defined functions for modular exponentiation,
-       modular multiplication, modular inverse(using Extended Euclidean Algorithm).
+    4. Implement Encryption and Decryption by using user defined functions for 
 */
 import java.util.*;
 import java.math.*;
