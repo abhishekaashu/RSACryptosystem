@@ -39,42 +39,6 @@ class RSAConcept
         return res;
     }
 
-
-    /*static boolean millerTest(BigInteger d, BigInteger n)
-    {
-        Random rand = new Random();
-        BigInteger a = new BigInteger(n.intValue(), rand);
-        a=a.add(BigInteger.TWO);
-        BigInteger x = modexp(a, d, n); 
-        if (x.compareTo(BigInteger.ONE)==0 || x == n.subtract(BigInteger.ONE))
-            return true; 
-        while (d != n.subtract(BigInteger.ONE)) { 
-            x = (x.multiply(x)).mod(n); 
-            d=d.multiply(BigInteger.TWO); 
-            if (x.compareTo(BigInteger.ONE)==0) 
-                return false; 
-            if (x ==n.subtract(BigInteger.ONE)) 
-                return true; 
-        } 
-        return false; 
-    }
-
-    static boolean isPrime(BigInteger n, int k)
-    { 
-
-        if (n.compareTo(BigInteger.ONE)<=0 || n.compareTo(BigInteger.valueOf(4))==0) 
-            return false; 
-        if (n.compareTo(BigInteger.valueOf(3))<0) 
-            return true; 
-        BigInteger d= n.subtract(BigInteger.ONE);
-        while (d.mod(BigInteger.valueOf(2)).compareTo(BigInteger.TWO)==0) 
-            d=d.divide(BigInteger.TWO); 
-        for (int i = 0; i < k; i++) 
-            if (!millerTest(d, n)) 
-                return false; 
-        return true; 
-    }*/
-
     static BigInteger modInv(BigInteger a,BigInteger m) 
     { 
         BigInteger m0 = m; 
@@ -148,27 +112,26 @@ class RSAConcept
     public byte[] encrypt(byte[] message)
     {
         BigInteger m=new BigInteger(message);
-        return m.modPow(e, n).toByteArray();
+        return modexp(m,e, n).toByteArray();
     }
 
     // Decrypt message
     public byte[] decrypt(byte[] message)
     {
         BigInteger m=new BigInteger(message);
-        return m.modPow(d, n).toByteArray();
+        return modexp(m,d, n).toByteArray();
     }
 
 	public static void main(String args[])
 	{
         
-		RSAConcept rsa=new RSAConcept();
+        RSAConcept rsa=new RSAConcept();
+        rsa.rsa_keygen();
         String teststring = "Sahil";
 		String a=bytesToString(teststring.getBytes());
 		System.out.println("Encrypting String: " + teststring);
         System.out.println("String in Bytes: "+a);
-        // encrypt
         byte[] encrypted = rsa.encrypt(teststring.getBytes());
-        // decrypt
         byte[] decrypted = rsa.decrypt(encrypted);
 		System.out.println("Decrypting Bytes: " + bytesToString(decrypted));
 		String sahil=new String(decrypted);
