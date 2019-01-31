@@ -1,8 +1,9 @@
 import java.math.BigInteger;
 
-class GFG{ 
+class discretelog{ 
     /* Iterative Function to calculate (x ^ y)%p in  
     O(log y) */
+    //(x^y)%p
     static BigInteger modexp(BigInteger x,BigInteger y,BigInteger p)
     {
         BigInteger res=BigInteger.valueOf(1);
@@ -17,7 +18,7 @@ class GFG{
             x=(x.multiply(x)).mod(p);
         }
         return res;
-    }  
+    }
       
     // Function to calculate k for given a, b, m  
     static BigInteger discreteLogarithm(BigInteger a,BigInteger b,BigInteger m) {  
