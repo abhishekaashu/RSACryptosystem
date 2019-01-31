@@ -5,7 +5,6 @@
     3. Decrypt the message using the private key.
     4. Implement Encryption and Decryption by using user defined functions for modular exponentiation,
        modular multiplication, modular inverse(using Extended Euclidean Algorithm).
-    
 */
 import java.util.*;
 import java.math.*;
