@@ -59,7 +59,7 @@ class GFG{
       
         a = BigInteger.valueOf(3); 
         b = BigInteger.valueOf(7); 
-        m = BigInteger.valueOf(7);  
+        m = BigInteger.valueOf(11);  
         System.out.println(discreteLogarithm(a, b, m));  
     }  
 }

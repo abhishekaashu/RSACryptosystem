@@ -33,6 +33,42 @@ class RSAConcept
         return res;
     }
 
+    static boolean millerTest(BigInteger d, BigInteger n)
+    {
+        BigInteger a=BigInteger.TWO;
+        BigInteger x = modexp(a,d,n); 
+        if (x.equals(BigInteger.ONE) || x.equals(n.subtract(BigInteger.ONE)))
+            return true; 
+        while (!(d.equals(n.subtract(BigInteger.ONE))))
+        {
+            x = (x.multiply(x)).mod(n); 
+            d=d.multiply(BigInteger.TWO); 
+            if (x.equals(BigInteger.ONE)) 
+                return false; 
+            if (x.equals(n.subtract(BigInteger.ONE)))
+                return true; 
+        } 
+        return false; 
+    }
+
+    static boolean isPrime(BigInteger n, int k)
+    { 
+
+        if (n.compareTo(BigInteger.ONE)<=0 || n.equals(BigInteger.valueOf(4)))
+            return false; 
+        if (n.compareTo(BigInteger.valueOf(3))<=0) 
+            return true; 
+        BigInteger d= n.subtract(BigInteger.ONE);
+        while (d.mod(BigInteger.valueOf(2)).equals(BigInteger.ZERO))
+        { 
+            d=d.divide(BigInteger.TWO);
+        }
+        for (int i = 0; i < k; i++) 
+            if (!millerTest(d, n)) 
+                return false; 
+        return true; 
+    }
+
     //(x*y)%p
     static BigInteger modmult(BigInteger x,BigInteger y,BigInteger p)
     {
@@ -93,7 +129,9 @@ class RSAConcept
     void rsa_keygen()
     {
         p=gen_prime();
+        System.out.println(isPrime(p, 4));
         q=gen_prime();
+        System.out.println(isPrime(q, 4));
         n=p.multiply(q);
         e = BigInteger.valueOf(2);
 		phi = (p.subtract(BigInteger.ONE)).multiply((q.subtract(BigInteger.ONE)));
@@ -105,7 +143,6 @@ class RSAConcept
 				e=e.add(BigInteger.ONE);
         }
         d=modInv(e,phi);
-        System.out.println(d);
     }
 
     private static String bytesToString(byte[] encrypted)

@@ -4,10 +4,8 @@ class test1
 {
     static boolean millerTest(BigInteger d, BigInteger n)
     {
-        Random rand = new Random();
-        BigInteger a = new BigInteger(n.intValue(), rand);
-        a=a.add(BigInteger.TWO);
-        BigInteger x = modexp(a, d, n); 
+        BigInteger a=BigInteger.TWO;
+        BigInteger x = modexp(a,d,n); 
         if (x.equals(BigInteger.ONE) || x.equals(n.subtract(BigInteger.ONE)))
             return true; 
         while (!(d.equals(n.subtract(BigInteger.ONE))))
@@ -30,9 +28,10 @@ class test1
         if (n.compareTo(BigInteger.valueOf(3))<=0) 
             return true; 
         BigInteger d= n.subtract(BigInteger.ONE);
-        while (d.mod(BigInteger.valueOf(2)).equals(BigInteger.ZERO)) 
-            System.out.println("This");
-            d=d.divide(BigInteger.TWO); 
+        while (d.mod(BigInteger.valueOf(2)).equals(BigInteger.ZERO))
+        { 
+            d=d.divide(BigInteger.TWO);
+        }
         for (int i = 0; i < k; i++) 
             if (!millerTest(d, n)) 
                 return false; 
@@ -44,7 +43,7 @@ class test1
         x=x.mod(p);
         while(y.compareTo(BigInteger.ZERO)==1)
         {
-            if(y.and(BigInteger.ONE).equals(BigInteger.ONE))//y is odd
+            if((y.mod(BigInteger.TWO)).compareTo(BigInteger.ONE)==0)//y is odd
             {
                 res=(res.multiply(x)).mod(p);
             }
@@ -58,7 +57,7 @@ class test1
         Scanner sc=new Scanner(System.in);
         String s1=sc.nextLine();
         BigInteger a=new BigInteger(s1);
-        boolean d=isPrime(a,10);
+        boolean d=isPrime(a,1000);
         System.out.println(d);
         sc.close();
     }
