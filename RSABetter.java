@@ -1,5 +1,16 @@
-import java.util.*;
+/********************************************************
+   1. Generate an RSA Public-Private key pair.
+   2. Encrypt an arbitrary message using the public key.
+   3. Decrypt the message using the private key. 
 
+Experiment the above with
+ In addition to the time measurements for key generation, encryption and decryption AND analysis of results please submit an appendix which includes:
+
+    * Your Java code.
+    * A sample key and message with key generation time and encryption / decryption time.
+    * A script file to execute your program. 
+********************************************************/
+import java.util.*;
 import java.math.*;
 class RsaBetter
 {
