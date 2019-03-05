@@ -129,9 +129,9 @@ class RSAConcept
     void rsa_keygen()
     {
         p=gen_prime();
-        System.out.println(isPrime(p, 4));
+        System.out.println(MillerTest.isPrime(p, 4));
         q=gen_prime();
-        System.out.println(isPrime(q, 4));
+        System.out.println(MillerTest.isPrime(q, 4));
         n=p.multiply(q);
         e = BigInteger.valueOf(2);
 		phi = (p.subtract(BigInteger.ONE)).multiply((q.subtract(BigInteger.ONE)));

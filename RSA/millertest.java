@@ -1,6 +1,5 @@
-import java.util.*;
 import java.math.*;
-class test1
+class MillerTest
 {
     static boolean millerTest(BigInteger d, BigInteger n)
     {
@@ -10,7 +9,6 @@ class test1
             return true; 
         while (!(d.equals(n.subtract(BigInteger.ONE))))
         {
-            System.out.println("Hi");
             x = (x.multiply(x)).mod(n); 
             d=d.multiply(BigInteger.TWO); 
             if (x.equals(BigInteger.ONE)) 
@@ -51,14 +49,5 @@ class test1
             x=(x.multiply(x)).mod(p);
         }
         return res;
-    }
-    public static void main(String args[])
-    {
-        Scanner sc=new Scanner(System.in);
-        String s1=sc.nextLine();
-        BigInteger a=new BigInteger(s1);
-        boolean d=isPrime(a,1000);
-        System.out.println(d);
-        sc.close();
     }
 }
