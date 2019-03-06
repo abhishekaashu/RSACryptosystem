@@ -4,7 +4,8 @@ class DHProto
 {
     static int bitLength=1024;
     BigInteger l;
-    static BigInteger p,a,shared;
+    static BigInteger p,a;
+    static private BigInteger shared;
     private BigInteger k;
 
     DHProto(int x)
@@ -52,6 +53,10 @@ class DHProto
         DHProto alice=new DHProto(m);
         DHProto bob=new DHProto(n);
         shared_key(alice,bob);
-        //shared=modexp(a,alice.k.multiply(bob.k),p);
+        System.out.println(p);
+        System.out.println(a);
+        System.out.println(alice.l);
+        System.out.println(bob.l);
+        System.out.println(shared);   
     }
 }
